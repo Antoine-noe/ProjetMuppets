@@ -1,0 +1,19 @@
+table
+{
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 600px;
+    height: 600px;
+}
+tr,td
+{
+    border: 3px solid black;
+}
+.casenoire
+{
+    background-color: #792f12 ;
+}
+.caseblanche
+{
+    background-color: #cca773;
+}
