@@ -1,0 +1,83 @@
+/*posisionnement global du site*/
+body {
+    margin: 0; padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: Rubik, sans-serif;
+}
+header {
+    flex: 1;
+    background-color: #DEE1E1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer {
+    flex: 1;
+    background-color: #7EDCB1;
+}
+section {
+    flex: 40;
+    display: flex;
+    flex-direction: column;
+}
+.sectionHeader {
+    flex: 1;
+    background-color: #7EDCB1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sectionPpal {
+    flex: 13;
+    display: flex;
+}
+.j1, .j2 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #7EDCB1;
+}
+article {
+    flex: 5;
+    display: flex;
+    justify-content: center;
+}
+/*apparence des elements*/
+select {
+    width: 204px;
+    height: 35px;
+}
+input, select {
+    margin-top: 20px;
+    font-family: Rubik, sans-serif;
+    border-radius: 5px;
+}
+input{
+    width: 200px;
+    height: 30px;
+}
+button {
+    font-family: Rubik, sans-serif;
+    font-size: 1em;
+    border-radius: 5px;
+    width: 200px;
+    height: 30px;
+}
+button:hover {
+    font-weight: bold;
+    border: 1px dimgrey solid;
+}
+/*Cadres des pions pris*/
+.cadreJ1, .cadreJ2 {
+    margin-top: 55px;
+    height: 300px;
+    width: 200px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background-color: #9CE6C4;
+}
+
+/*Style noms Joueurs*/
