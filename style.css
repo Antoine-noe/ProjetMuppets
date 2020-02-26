@@ -14,7 +14,7 @@ header {
     align-items: center;
 }
 footer {
-    flex: 1;
+    flex: 2;
     background-color: #7EDCB1;
 }
 section {
@@ -41,7 +41,8 @@ section {
     background-color: #7EDCB1;
 }
 article {
-    flex: 5;
+    width: 600px;
+    height: 600px;
     display: flex;
     justify-content: center;
 }
@@ -80,4 +81,27 @@ button:hover {
     background-color: #9CE6C4;
 }
 
-/*Style noms Joueurs*/
+
+
+
+/*Style Damier*/
+
+table
+{
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 600px;
+    height: 600px;
+}
+tr,td
+{
+    border: 3px solid black;
+}
+.casenoire
+{
+    background-color: #792f12 ;
+}
+.caseblanche
+{
+    background-color: #cca773;
+}
