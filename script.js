@@ -4,13 +4,23 @@ let nomJoueur2=document.querySelector('#joueur2');
 let recupInputs=document.querySelectorAll('input');
 let recupDiv=document.querySelectorAll('.NomJ12');
 let boutonValider=document.querySelector('#debuterPartie');
-let recupOptions=document.querySelectorAll('option');
 let recupSelects=document.querySelectorAll('select');
 
 boutonValider.addEventListener('click', lancerPartie);
+//Annulation de partie
+let boutonValider2=document.querySelector('#debuterPartie');
+boutonValider2.removeChild(boutonValider2.firstChild);
+let TextNouvelPartie=document.createTextNode("Recommencer la partie");
+boutonValider2.appendChild(TextNouvelPartie);
+
+boutonValider2.addEventListener('click', recommencerPartie);
+function recommencerPartie(){
+    if(confirm("Souhaitez-vous annuler la partie en cours ?")){
+        document.location.reload(true);}
+}
 
 
-
+//Debut de partie
 function lancerPartie (){
     //Si champs joueurs vides
     if(nomJoueur1.value===""){
@@ -65,16 +75,32 @@ function lancerPartie (){
 
 }
 
+//Tableau Javascript
+let tableJS = new Array(10);
+
+for(let i=0; i<10; i++){
+    tableJS[i]= new Array(10);
+}
+
+//Coordonnées TableauJS
+let coord2 = ["A","B","C","D","E","F","G","H","I","J"];
+let coord3= [1,2,3,4,5,6,7,8,9,10];
+
+for(let i=0; i<10; i++){
+    for(let j=0; j<10; j++){
+        tableJS[i][j]=coord2[i]+coord3[j];
+    }
+}
 
 
-
-// Tableau coordonnées
+// Tableau HTML coordonnées
     let damierArticle=document.querySelector('#tableau');
 
 let coord = ["A","B","C","D","E","F","G","H","I","J"];
 
 // Création et affichage du damier
 let table = document.createElement("table");
+damierArticle.appendChild(table);
 for (let i = 0; i < 10; i++) {
     let tr = document.createElement('tr');
     tr.id = coord[i];
@@ -83,49 +109,55 @@ for (let i = 0; i < 10; i++) {
         td.id = coord[i]+j;
         if (i%2 === j%2) {
             td.className = "caseblanche";
+
         } else {
             td.className = "casenoire";
         }
         tr.appendChild(td);
     }
+
     table.appendChild(tr);
 }
-    damierArticle.appendChild(table);
-console.log(table);
+
+
+
+
+
+
+
 
 //Creation pions et insertion tableau
 
-let pionsBlanc=["pb1", "pb2", "pb3", "pb4", "pb5","pb6", "pb7", "pb8", "pb9", "pb10","pb11", "pb12", "pb13", "pb14", "pb15","pb16", "pb17", "pb18", "pb19", "pb20"];
-let pionsNoir=["pn1", "pn2", "pn3", "pn4", "pn5","pn6", "pn7", "pn8", "pn9", "pn10","pn11", "pn12", "pn13", "pn14", "pn15","pn16", "pn17", "pn18", "pn19", "pn20"];
-console.log(pionsBlanc);
-let y=0;
-let z=0;
-for(let i=0; i<=10; i++)
-{
+/*function initialisationPions(){
 
-    if(i%2===0)
-    {
-            table[i][0]=pionsBlanc[z];
-            z++;
-            table[i][2]=pionsBlanc[z];
-            z++;
-            table[i][6]=pionsNoir[y];
-            y++;
-            table[i][8]=pionsNoir[y];
-            y++;
-    }else{
 
-            table[i][1]=pionsBlanc[z];
-            z++;
-            table[i][3]=pionsBlanc[z];
-            z++;
-            table[i][7]=pionsNoir[y];
-            y++;
-            table[i][9]=pionsNoir[y];
-            y++;
-        }
+
+
+            tableJS[0][0]=pionsBlanc[0];
 
 }
 
 
+initialisationPions();
+console.log(tableJS);*/
+/*if(i%2===0)
+{
+    tableJS[i][0]=pionsBlanc[z];
+    z++;
+    tableJS[i][2]=pionsBlanc[z];
+    z++;
+    tableJS[i][6]=pionsNoir[y];
+    y++;
+    tableJS[i][8]=pionsNoir[y];
+    y++;
+}else{
 
+    tableJS[i][1]=pionsBlanc[z];
+    z++;
+    tableJS[i][3]=pionsBlanc[z];
+    z++;
+    tableJS[i][7]=pionsNoir[y];
+    y++;
+    tableJS[i][9]=pionsNoir[y];
+    y++;
+}*/
