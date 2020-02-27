@@ -4,6 +4,9 @@ let nomJoueur2=document.querySelector('#joueur2');
 let recupInputs=document.querySelectorAll('input');
 let recupDiv=document.querySelectorAll('.NomJ12');
 let boutonValider=document.querySelector('#debuterPartie');
+let recupOptions=document.querySelectorAll('option');
+let recupSelects=document.querySelectorAll('select');
+
 boutonValider.addEventListener('click', lancerPartie);
 
 
@@ -39,13 +42,18 @@ function lancerPartie (){
         recupDiv[1].appendChild(Joueur2);
 
 
-//Les noms sont incrémentés donc on supprime les Inputs:
+//Les noms sont incrémentés donc on supprime les Inputs et les select et les options:
 
         let recherchePourEffacerInput1=document.querySelector('#asuppr1');
         recherchePourEffacerInput1.removeChild(recupInputs[0]);
+        recherchePourEffacerInput1.removeChild(recupSelects[0]);
 
         let recherchePourEffacerInput2=document.querySelector('#asuppr2');
         recherchePourEffacerInput2.removeChild(recupInputs[1]);
+        recherchePourEffacerInput2.removeChild(recupSelects[1]);
+
+
+
 
 //Ici mettre la fonction tableau
 

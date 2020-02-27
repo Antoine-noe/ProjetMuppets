@@ -14,7 +14,7 @@ header {
     align-items: center;
 }
 footer {
-    flex: 2;
+    flex: 3;
     background-color: #7EDCB1;
 }
 section {
@@ -43,8 +43,7 @@ section {
 article {
     width: 600px;
     height: 600px;
-    display: flex;
-    justify-content: center;
+    background-color: #7EDCB1;
 }
 /*apparence des elements*/
 select {
@@ -104,4 +103,10 @@ tr,td
 .caseblanche
 {
     background-color: #cca773;
+}
+
+#asuppr1, #asuppr2{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
