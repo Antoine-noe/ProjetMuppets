@@ -8,20 +8,24 @@ let recupSelects=document.querySelectorAll('select');
 
 boutonValider.addEventListener('click', lancerPartie);
 //Annulation de partie
-let boutonValider2=document.querySelector('#debuterPartie');
-boutonValider2.removeChild(boutonValider2.firstChild);
-let TextNouvelPartie=document.createTextNode("Recommencer la partie");
-boutonValider2.appendChild(TextNouvelPartie);
 
-boutonValider2.addEventListener('click', recommencerPartie);
-function recommencerPartie(){
-    if(confirm("Souhaitez-vous annuler la partie en cours ?")){
-        document.location.reload(true);}
-}
+
+
+
+
+
+
 
 
 //Debut de partie
 function lancerPartie (){
+
+    let TextNouvelPartie=document.createTextNode("Recommencer la partie");
+    let boutonValider2=document.querySelector('#debuterPartie');
+    boutonValider2.removeChild(boutonValider2.firstChild);
+    boutonValider2.addEventListener('click', recommencerPartie);
+    boutonValider2.appendChild(TextNouvelPartie);
+
     //Si champs joueurs vides
     if(nomJoueur1.value===""){
         nomJoueur1.value="Joueur1";
@@ -75,6 +79,11 @@ function lancerPartie (){
 
 }
 
+function recommencerPartie(){
+    if(confirm("Souhaitez-vous annuler la partie en cours ?")){
+        document.location.reload(true);}
+}
+
 //Tableau Javascript
 let tableJS = new Array(10);
 
@@ -83,15 +92,36 @@ for(let i=0; i<10; i++){
 }
 
 //Coordonnées TableauJS
-let coord2 = ["A","B","C","D","E","F","G","H","I","J"];
-let coord3= [1,2,3,4,5,6,7,8,9,10];
 
+let pionsBlanc=["pb1", "pb2", "pb3", "pb4", "pb5", "pb6", "pb7", "pb8", "pb9", "pb10", "pb11", "pb12", "pb13", "pb14", "pb15", "pb16", "pb17", "pb18", "pb19", "pb20"];
+let pionsNoir=["pn1", "pn2", "pn3", "pn4", "pn5", "pn6", "pn7", "pn8", "pn9", "pn10", "pn11", "pn12", "pn13", "pn14", "pn15", "pn16", "pn17", "pn18", "pn19", "pn20"];
+let y=0;
+let z=0;
 for(let i=0; i<10; i++){
-    for(let j=0; j<10; j++){
-        tableJS[i][j]=coord2[i]+coord3[j];
-    }
-}
 
+        if(i%2===0)
+        {
+            tableJS[i][0]=pionsBlanc[z];
+            z++;
+            tableJS[i][2]=pionsBlanc[z];
+            z++;
+            tableJS[i][6]=pionsNoir[y];
+            y++;
+            tableJS[i][8]=pionsNoir[y];
+            y++;
+        }else{
+
+            tableJS[i][1]=pionsBlanc[z];
+            z++;
+            tableJS[i][3]=pionsBlanc[z];
+            z++;
+            tableJS[i][7]=pionsNoir[y];
+            y++;
+            tableJS[i][9]=pionsNoir[y];
+            y++;
+
+                }}
+console.log(tableJS);
 
 // Tableau HTML coordonnées
     let damierArticle=document.querySelector('#tableau');
@@ -130,7 +160,8 @@ for (let i = 0; i < 10; i++) {
 
 /*function initialisationPions(){
 
-
+let coord2 = ["A","B","C","D","E","F","G","H","I","J"];
+let coord3= [1,2,3,4,5,6,7,8,9,10];
 
 
             tableJS[0][0]=pionsBlanc[0];
