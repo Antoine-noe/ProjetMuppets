@@ -15,6 +15,9 @@ header {
 }
 footer {
     flex: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #7EDCB1;
 }
 section {
@@ -32,6 +35,7 @@ section {
 .sectionPpal {
     flex: 13;
     display: flex;
+    background-color: #7EDCB1;
 }
 .j1, .j2 {
     flex: 1;
@@ -41,8 +45,8 @@ section {
     background-color: #7EDCB1;
 }
 article {
-    width: 600px;
-    height: 600px;
+    width: 900px;
+    height: 900px;
     background-color: #7EDCB1;
 }
 /*apparence des elements*/
@@ -65,6 +69,9 @@ button {
     border-radius: 5px;
     width: 200px;
     height: 30px;
+    background-color: #3498DB;
+    border: none;
+    color: #FFFFFF;
 }
 button:hover {
     font-weight: bold;
@@ -89,12 +96,14 @@ table
 {
     margin: 0 auto;
     border-collapse: collapse;
-    width: 600px;
-    height: 600px;
+    width: 900px;
+    height: 900px;
 }
 tr,td
 {
     border: 3px solid black;
+    width:90px;
+
 }
 .casenoire
 {
@@ -110,3 +119,36 @@ tr,td
     flex-direction: column;
     flex-wrap: wrap;
 }
+
+/*BOUTON REGLES DU JEU*/
+.dropUp {
+    position: relative;
+    display: inline-block;
+    margin-right: 500px;
+}
+.dropUp-content {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    background-color: #DEE1E1;
+    opacity: 0.9;
+    width: 900px;
+    height: 920px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    overflow: scroll;
+}
+.dropUp:hover .dropUp-content {
+    display: block;
+}
+/*Style du texte et images*/
+.dropUp h2, h3, p {
+    text-align: center;
+}
+.dropUp h2 {
+    text-decoration: underline;
+}
+.dropUp img {
+    margin-left: 300px;
+}
+/*référence des règles: http://www.lecomptoirdesjeux.com/regle-jeu-dames.htm*/

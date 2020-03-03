@@ -7,6 +7,7 @@ let boutonValider=document.querySelector('#debuterPartie');
 let recupSelects=document.querySelectorAll('select');
 
 boutonValider.addEventListener('click', lancerPartie);
+
 //Annulation de partie
 
 
@@ -93,31 +94,31 @@ for(let i=0; i<10; i++){
 
 //Coordonnées TableauJS
 
-let pionsBlanc=["pb1", "pb2", "pb3", "pb4", "pb5", "pb6", "pb7", "pb8", "pb9", "pb10", "pb11", "pb12", "pb13", "pb14", "pb15", "pb16", "pb17", "pb18", "pb19", "pb20"];
-let pionsNoir=["pn1", "pn2", "pn3", "pn4", "pn5", "pn6", "pn7", "pn8", "pn9", "pn10", "pn11", "pn12", "pn13", "pn14", "pn15", "pn16", "pn17", "pn18", "pn19", "pn20"];
+
 let y=0;
 let z=0;
+
 for(let i=0; i<10; i++){
 
         if(i%2===0)
         {
-            tableJS[i][0]=pionsBlanc[z];
+            tableJS[i][0]="<img src='images/pionBlanc.png' alt='pb"+z+"' id='pb"+z+"'>";
             z++;
-            tableJS[i][2]=pionsBlanc[z];
+            tableJS[i][2]="<img src='images/pionBlanc.png' alt='pb"+z+"' id='pb"+z+"'>";
             z++;
-            tableJS[i][6]=pionsNoir[y];
+            tableJS[i][6]="<img src='images/pionNoir.png' alt='pb"+y+"' id='pb"+y+"'>";
             y++;
-            tableJS[i][8]=pionsNoir[y];
+            tableJS[i][8]="<img src='images/pionNoir.png' alt='pb"+y+"' id='pb"+y+"'>";
             y++;
         }else{
 
-            tableJS[i][1]=pionsBlanc[z];
+            tableJS[i][1]="<img src='images/pionBlanc.png' alt='pb"+z+"' id='pb"+z+"'>";
             z++;
-            tableJS[i][3]=pionsBlanc[z];
+            tableJS[i][3]="<img src='images/pionBlanc.png' alt='pb"+z+"' id='pb"+z+"'>";
             z++;
-            tableJS[i][7]=pionsNoir[y];
+            tableJS[i][7]="<img src='images/pionNoir.png' alt='pb"+y+"' id='pb"+y+"'>";
             y++;
-            tableJS[i][9]=pionsNoir[y];
+            tableJS[i][9]="<img src='images/pionNoir.png' alt='pb"+y+"' id='pb"+y+"'>";
             y++;
 
                 }}
@@ -134,7 +135,7 @@ damierArticle.appendChild(table);
 for (let i = 0; i < 10; i++) {
     let tr = document.createElement('tr');
     tr.id = coord[i];
-    for (let j = 1; j <= 10; j++) {
+    for (let j = 0; j < 10; j++) {
         let td = document.createElement('td');
         td.id = coord[i]+j;
         if (i%2 === j%2) {
@@ -142,6 +143,11 @@ for (let i = 0; i < 10; i++) {
 
         } else {
             td.className = "casenoire";
+        }
+        td.innerHTML=tableJS[i][j];
+        td.style.textAlign="center";
+        if(td.innerHTML==="undefined"){
+            td.innerHTML="";
         }
         tr.appendChild(td);
     }
@@ -156,39 +162,3 @@ for (let i = 0; i < 10; i++) {
 
 
 
-//Creation pions et insertion tableau
-
-/*function initialisationPions(){
-
-let coord2 = ["A","B","C","D","E","F","G","H","I","J"];
-let coord3= [1,2,3,4,5,6,7,8,9,10];
-
-
-            tableJS[0][0]=pionsBlanc[0];
-
-}
-
-
-initialisationPions();
-console.log(tableJS);*/
-/*if(i%2===0)
-{
-    tableJS[i][0]=pionsBlanc[z];
-    z++;
-    tableJS[i][2]=pionsBlanc[z];
-    z++;
-    tableJS[i][6]=pionsNoir[y];
-    y++;
-    tableJS[i][8]=pionsNoir[y];
-    y++;
-}else{
-
-    tableJS[i][1]=pionsBlanc[z];
-    z++;
-    tableJS[i][3]=pionsBlanc[z];
-    z++;
-    tableJS[i][7]=pionsNoir[y];
-    y++;
-    tableJS[i][9]=pionsNoir[y];
-    y++;
-}*/
