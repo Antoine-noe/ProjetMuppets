@@ -10,14 +10,6 @@ boutonValider.addEventListener('click', lancerPartie);
 
 //Annulation de partie
 
-
-
-
-
-
-
-
-
 //Debut de partie
 function lancerPartie (){
 
@@ -35,24 +27,25 @@ function lancerPartie (){
         nomJoueur2.value="Joueur2";
     }
     //Recherche inputs pour vérifier si les noms sont deja inscrits
-    let rechercheH3=document.querySelectorAll("h3");
+    let rechercheH3=document.querySelectorAll("h1");
     if(rechercheH3.length === 0)
     //Si tableau des inputs vides, alors je créer, sinon, je ne fais rien.
     {
         //JOUEUR1
-    let Joueur1=document.createElement('h3');
+    let Joueur1=document.createElement('h1');
     let Joueur1T=document.createTextNode(nomJoueur1.value);
         Joueur1.appendChild(Joueur1T);
         Joueur1.style.color='white';
-        Joueur1.style.fontSize='30px';
+        Joueur1.style.fontSize='70px';
         Joueur1.style.fontWeight='bold';
         recupDiv[0].appendChild(Joueur1);
         //JOUEUR2
-    let Joueur2=document.createElement('h3');
+    let Joueur2=document.createElement('h1');
+
     let Joueur2T=document.createTextNode(nomJoueur2.value);
         Joueur2.appendChild(Joueur2T);
         Joueur2.style.color='black';
-        Joueur2.style.fontSize='30px';
+        Joueur2.style.fontSize='70px';
         Joueur2.style.fontWeight='bold';
         recupDiv[1].appendChild(Joueur2);
 
@@ -106,9 +99,9 @@ for(let i=0; i<10; i++){
             z++;
             tableJS[i][2]="<img src='images/pionBlanc.png' alt='pb"+z+"' id='pb"+z+"'>";
             z++;
-            tableJS[i][6]="<img src='images/pionNoir.png' alt='pb"+y+"' id='pb"+y+"'>";
+            tableJS[i][6]="<img src='images/pionNoir.png' alt='pn"+y+"' id='pn"+y+"'>";
             y++;
-            tableJS[i][8]="<img src='images/pionNoir.png' alt='pb"+y+"' id='pb"+y+"'>";
+            tableJS[i][8]="<img src='images/pionNoir.png' alt='pn"+y+"' id='pn"+y+"'>";
             y++;
         }else{
 
@@ -116,9 +109,9 @@ for(let i=0; i<10; i++){
             z++;
             tableJS[i][3]="<img src='images/pionBlanc.png' alt='pb"+z+"' id='pb"+z+"'>";
             z++;
-            tableJS[i][7]="<img src='images/pionNoir.png' alt='pb"+y+"' id='pb"+y+"'>";
+            tableJS[i][7]="<img src='images/pionNoir.png' alt='pn"+y+"' id='pn"+y+"'>";
             y++;
-            tableJS[i][9]="<img src='images/pionNoir.png' alt='pb"+y+"' id='pb"+y+"'>";
+            tableJS[i][9]="<img src='images/pionNoir.png' alt='pn"+y+"' id='pn"+y+"'>";
             y++;
 
                 }}
@@ -137,6 +130,11 @@ for (let i = 0; i < 10; i++) {
     tr.id = coord[i];
     for (let j = 0; j < 10; j++) {
         let td = document.createElement('td');
+        /*td.setAttribute("mouseover", "SurvolDamier(this)");*/
+        td.setAttribute("onmouseover", "SurvolDamier(this)");
+        td.setAttribute("onmouseout", "SurvolDamier2(this)");
+        td.setAttribute("onclick", "SelectionPion(this)");
+
         td.id = coord[i]+j;
         if (i%2 === j%2) {
             td.className = "caseblanche";
@@ -155,8 +153,18 @@ for (let i = 0; i < 10; i++) {
     table.appendChild(tr);
 }
 
-
-
+function SurvolDamier(tdAC){
+tdAC.firstChild.style.transform = 'scale(1.6)';
+}
+function SurvolDamier2(tdAC){
+    tdAC.firstChild.style.transform = 'scale(1)';
+}
+function SelectionPion(tdAC){
+  if(tdAC.style.backgroundColor!=='yellow'){
+    tdAC.style.backgroundColor='#d5s4s5 0.5';
+                                     }
+  else{tdAC.style.backgroundColor='';}
+}
 
 
 
