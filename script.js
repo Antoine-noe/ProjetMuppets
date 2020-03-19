@@ -5,14 +5,16 @@ let recupInputs=document.querySelectorAll('input');
 let recupDiv=document.querySelectorAll('.NomJ12');
 let boutonValider=document.querySelector('#debuterPartie');
 let recupSelects=document.querySelectorAll('select');
-
+let recupTableau=document.querySelector('#tableau');
+let rotateBut=document.querySelector('#rotateBut');
 boutonValider.addEventListener('click', lancerPartie);
+
 
 //Annulation de partie
 
 //Debut de partie
 function lancerPartie (){
-
+    rotateBut.addEventListener('click', rotationTab);
     let TextNouvelPartie=document.createTextNode("Recommencer la partie");
     let boutonValider2=document.querySelector('#debuterPartie');
     boutonValider2.removeChild(boutonValider2.firstChild);
@@ -21,7 +23,7 @@ function lancerPartie (){
 
     //Si champs joueurs vides
     if(nomJoueur1.value===""){
-        nomJoueur1.value="Joueur1";
+        nomJoueur1.value="Joueur 1";
     }
     if(nomJoueur2.value===""){
         nomJoueur2.value="Joueur2";
@@ -130,12 +132,12 @@ for (let i = 0; i < 10; i++) {
     tr.id = coord[i];
     for (let j = 0; j < 10; j++) {
         let td = document.createElement('td');
-        /*td.setAttribute("mouseover", "SurvolDamier(this)");*/
-        td.setAttribute("onmouseover", "SurvolDamier(this)");
-        td.setAttribute("onmouseout", "SurvolDamier2(this)");
-        td.setAttribute("onclick", "SelectionPion(this)");
-
         td.id = coord[i]+j;
+       /* td.setAttribute("onclick", "SurvolDamier(this)");*/
+      /*  td.setAttribute("onclick", "SurvolDamier2(this)");*/
+
+
+
         if (i%2 === j%2) {
             td.className = "caseblanche";
 
@@ -143,6 +145,7 @@ for (let i = 0; i < 10; i++) {
             td.className = "casenoire";
         }
         td.innerHTML=tableJS[i][j];
+
         td.style.textAlign="center";
         if(td.innerHTML==="undefined"){
             td.innerHTML="";
@@ -153,20 +156,64 @@ for (let i = 0; i < 10; i++) {
     table.appendChild(tr);
 }
 
-function SurvolDamier(tdAC){
-tdAC.firstChild.style.transform = 'scale(1.6)';
-}
-function SurvolDamier2(tdAC){
+/*function SurvolDamier(tdAC){
+
+ console.log("tdAC.id :" +tdAC.id);
+}*/
+/*function SurvolDamier2(tdAC){
+    if(tdAC.firstChild!==null){
     tdAC.firstChild.style.transform = 'scale(1)';
+}}*/
+/*let x=false;
+function SurvolDamier(tdAC){
+
+    if(tdAC.firstChild!==null && tdAC.firstChild.style.transform !== 'scale(1.6)' && x===false){
+        tdAC.firstChild.style.transform = 'scale(1.6)'; x=true;
+    }else
+        if(tdAC.firstChild!==null && tdAC.firstChild.style.transform !== 'scale(1)'){
+            tdAC.firstChild.style.transform = 'scale(1)'; x=false;
+        }
+}*/
+
+
+function rotationTab() {
+    if(recupTableau.style.transform!== "rotate(-90deg)")
+    recupTableau.style.transform= "rotate(-90deg)"; /* Équivalent à rotateZ(45deg) */
+    else if(recupTableau.style.transform=== "rotate(-90deg)"){
+        recupTableau.style.transform= "rotate(270deg)";
+        }if(recupTableau.style.transform=== "rotate(270deg)") {recupTableau.style.transform= "rotate(360deg)";}
 }
-function SelectionPion(tdAC){
-  if(tdAC.style.backgroundColor!=='yellow'){
-    tdAC.style.backgroundColor='#d5s4s5 0.5';
-                                     }
-  else{tdAC.style.backgroundColor='';}
+
+
+// Fonction pour selectionner un pion et le déplacer
+
+let etat = false; // Faux quand aucune pièce n'est pas sélectionné
+let pionSelectionne;
+let tdSelectionne;
+
+
+
+let td = document.querySelectorAll("td");
+for (let i = 0; i < td.length; i++) {
+    td[i].onclick = function(){
+        selectionCase(this);
+    };
 }
 
+function selectionCase(truc) {
+    if(!etat) { //je selectionne le pion dans la case
+        etat = true;
+        pionSelectionne = truc.innerHTML; // selection  du pion
+        console.log(truc.id);
+        tdSelectionne = truc; // selection du td
 
+    }
+    else { // sinon je bouge le pion
 
+        console.log(tdSelectionne.id);
+        truc.innerHTML = pionSelectionne;
+        tdSelectionne.innerHTML = "";
+        etat = false;
 
-
+    }
+}
