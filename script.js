@@ -1,4 +1,5 @@
 //DOM Inputs et bouton lancer partie
+
 let nomJoueur1=document.querySelector('#joueur1');
 let nomJoueur2=document.querySelector('#joueur2');
 let recupInputs=document.querySelectorAll('input');
@@ -7,6 +8,8 @@ let boutonValider=document.querySelector('#debuterPartie');
 let recupSelects=document.querySelectorAll('select');
 let recupTableau=document.querySelector('#tableau');
 let rotateBut=document.querySelector('#rotateBut');
+let cadreJ1=document.querySelector('#cadreJ1');
+let cadreJ2=document.querySelector('#cadreJ2');
 boutonValider.addEventListener('click', lancerPartie);
 
 
@@ -51,7 +54,6 @@ function lancerPartie (){
         Joueur2.style.fontWeight='bold';
         recupDiv[1].appendChild(Joueur2);
 
-
 //Les noms sont incrémentés donc on supprime les Inputs et les select et les options:
 
         let recherchePourEffacerInput1=document.querySelector('#asuppr1');
@@ -62,14 +64,10 @@ function lancerPartie (){
         recherchePourEffacerInput2.removeChild(recupInputs[1]);
         recherchePourEffacerInput2.removeChild(recupSelects[1]);
 
-
-
-
 //Ici mettre la fonction tableau
 
 }
     //Ici mettre variables pions
-
 
     //mecanique du jeu
 
@@ -89,7 +87,6 @@ for(let i=0; i<10; i++){
 
 //Coordonnées TableauJS
 
-
 let y=0;
 let z=0;
 
@@ -97,23 +94,23 @@ for(let i=0; i<10; i++){
 
         if(i%2===0)
         {
-            tableJS[i][0]="<img src='images/pionBlanc.png' alt='pb"+z+"' id='pb"+z+"'>";
+            tableJS[i][0]="<img src='images/pionBlanc.png' class='pBlanc' alt='pb"+z+"' id='pb"+z+"'>";
             z++;
-            tableJS[i][2]="<img src='images/pionBlanc.png' alt='pb"+z+"' id='pb"+z+"'>";
+            tableJS[i][2]="<img src='images/pionBlanc.png' class='pBlanc' alt='pb"+z+"' id='pb"+z+"'>";
             z++;
-            tableJS[i][6]="<img src='images/pionNoir.png' alt='pn"+y+"' id='pn"+y+"'>";
+            tableJS[i][6]="<img src='images/pionNoir.png' class='pNoir' alt='pn"+y+"' id='pn"+y+"'>";
             y++;
-            tableJS[i][8]="<img src='images/pionNoir.png' alt='pn"+y+"' id='pn"+y+"'>";
+            tableJS[i][8]="<img src='images/pionNoir.png' class='pNoir' alt='pn"+y+"' id='pn"+y+"'>";
             y++;
         }else{
 
-            tableJS[i][1]="<img src='images/pionBlanc.png' alt='pb"+z+"' id='pb"+z+"'>";
+            tableJS[i][1]="<img src='images/pionBlanc.png' class='pBlanc' alt='pb"+z+"' id='pb"+z+"'>";
             z++;
-            tableJS[i][3]="<img src='images/pionBlanc.png' alt='pb"+z+"' id='pb"+z+"'>";
+            tableJS[i][3]="<img src='images/pionBlanc.png' class='pBlanc' alt='pb"+z+"' id='pb"+z+"'>";
             z++;
-            tableJS[i][7]="<img src='images/pionNoir.png' alt='pn"+y+"' id='pn"+y+"'>";
+            tableJS[i][7]="<img src='images/pionNoir.png' class='pNoir' alt='pn"+y+"' id='pn"+y+"'>";
             y++;
-            tableJS[i][9]="<img src='images/pionNoir.png' alt='pn"+y+"' id='pn"+y+"'>";
+            tableJS[i][9]="<img src='images/pionNoir.png' class='pNoir' alt='pn"+y+"' id='pn"+y+"'>";
             y++;
 
                 }}
@@ -135,8 +132,6 @@ for (let i = 0; i < 10; i++) {
         td.id = coord[i]+j;
        /* td.setAttribute("onclick", "SurvolDamier(this)");*/
       /*  td.setAttribute("onclick", "SurvolDamier2(this)");*/
-
-
 
         if (i%2 === j%2) {
             td.className = "caseblanche";
@@ -191,8 +186,6 @@ let etat = false; // Faux quand aucune pièce n'est pas sélectionné
 let pionSelectionne;
 let tdSelectionne;
 
-
-
 let td = document.querySelectorAll("td");
 for (let i = 0; i < td.length; i++) {
     td[i].onclick = function(){
@@ -217,3 +210,33 @@ function selectionCase(truc) {
 
     }
 }
+
+/*Affichage victoire*/
+
+/*
+if (finPartie==true) {
+    if (victoireJ1==true) {
+        const imgULR = "../muppetsCheckers/images/victoire.gif";
+        swal({
+            title: "Victoire!",
+            text: "Bravo " +nomJoueur1.value+ ", vous avez gagné!",
+            icon: imgULR,
+            button: "Rejouer",
+        })
+            .then((value)=> {
+                document.location.reload(true);
+            })
+        if (victoireJ2==true) {
+            const imgULR = "../muppetsCheckers/images/victoire.gif";
+            swal({
+                title: "Victoire!",
+                text: "Bravo " +nomJoueur2.value+ ", vous avez gagné!",
+                icon: imgULR,
+                button: "Rejouer",
+            })
+                .then((value)=> {
+                    document.location.reload(true);
+                })
+        }
+    }
+}*/
